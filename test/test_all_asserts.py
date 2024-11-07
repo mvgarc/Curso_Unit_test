@@ -17,3 +17,14 @@ class AllAssertsTest(unittest.TestCase):
     def test_assert_in(self):
         self.assertIn(10, [2, 4, 5, 10])
         self.assertNotIn(5, [2, 4, 10])
+
+    def test_assert_dicts(self):
+        user = {"first_name": "Luis", "last_name": "Martinez"}
+        self.assertDictEqual(
+            {"first_name": "Luis", "last_name": "Martinez"},
+            user
+        )
+        self.assertSetEqual(
+            {1, 2, 3},
+            {1, 2, 3}
+        )
