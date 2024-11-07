@@ -12,3 +12,8 @@ class CalculatorTests(unittest.TestCase):
 
     def test_multiply(self):
         assert multiply(3, 2) == 6
+
+    def test_divide(self):
+        result = divide(10, 2)
+        expected = 5
+        assert result == expected
