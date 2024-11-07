@@ -29,6 +29,5 @@ class BankAccount:
         if self.balance < amount:
             self._log_transaction(f"Insuficient Balance: {self.balance} - Amount: {amount}")
             raise ValueError("Balance insuficiente")
-        
         account.deposit(amount)
         return self.withdraw(amount)
