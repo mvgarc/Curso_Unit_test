@@ -7,6 +7,11 @@ class BankAccountTests (unittest.TestCase):
     def setUp(self) -> None:
         self.account = BankAccount(balance=1000, log_file="transaction_log.txt")
 
+    def tearDown(self) -> None:
+        if os.path.exists(self.account.log_file):
+            os.remove(self.account.log_file)
+
+
     def test_deposit(self):
         new_balance = self.account.deposit(500)
         assert new_balance == 1500
