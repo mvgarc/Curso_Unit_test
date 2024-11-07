@@ -5,3 +5,5 @@ class BankAccountTests (unittest.TestCase):
 
     def setUp(self) -> None:
         self.account = BankAccount(balance=1000)
+
+    def test_deposit(self):
