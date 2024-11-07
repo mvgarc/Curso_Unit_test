@@ -23,7 +23,7 @@ class BankAccountTests (unittest.TestCase):
         self.assertEqual(new_balance, 800, "El balance no es igual")
     
     def test_get_balance(self):
-        assert self.account.get_balance() == 1000
+        self.assertEqual(self.account.get_balance(), 1001)
 
     def test_transaction_log(self):
         self.account.deposit(500)
