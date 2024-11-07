@@ -25,3 +25,7 @@ class BankAccountTests (unittest.TestCase):
     
     def test_get_balance(self):
         assert self.account.get_balance() == 1000
+
+    def test_transaction_log(self):
+        self.account.deposit(500)
+        assert os.path.exists("transaction_log.txt")
