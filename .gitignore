@@ -1,0 +1,28 @@
+# Archivos y carpetas de Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Archivos de entorno virtual
+venv/
+env/
+.venv/
+
+# Archivos de configuración del editor
+.idea/
+.vscode/
+
+# Archivos de configuración de los sistemas de pruebas
+.coverage
+nosetests.xml
+tox.ini
+*.log
+
+# Archivos de configuraciones de distribución
+*.egg-info/
+dist/
+build/
+
+# Archivos de configuración de flake8
+.flake8
