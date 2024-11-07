@@ -11,6 +11,9 @@ class BankAccountTests (unittest.TestCase):
         if os.path.exists(self.account.log_file):
             os.remove(self.account.log_file)
 
+    def _count_lines(self, filename):
+        with open(filename, "r") as f:
+            return len(f.readlines())
 
     def test_deposit(self):
         new_balance = self.account.deposit(500)
