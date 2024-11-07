@@ -7,3 +7,5 @@ class AllAssertsTest(unittest.TestCase):
         self.assertEqual("Hola", "Hola")
 
     def test_assert_true_or_false(self):
+        self.assertTrue(True)
+        self.assertFalse(False)
