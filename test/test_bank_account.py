@@ -13,3 +13,5 @@ class BankAccountTests (unittest.TestCase):
     def test_withdraw(self):
         new_balance = self.account.withdraw(200)
         assert new_balance == 800
+    
+    def test_get_balance(self):
