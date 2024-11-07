@@ -9,3 +9,6 @@ class CalculatorTests(unittest.TestCase):
 
     def test_subtract(self):
         assert subtract(10, 5) == 5
+
+    def test_multiply(self):
+        assert multiply(3, 2) == 6
