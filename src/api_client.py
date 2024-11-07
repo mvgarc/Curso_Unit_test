@@ -8,5 +8,5 @@ def get_location(ip):
     return {
         "country": data["countryName"],
         "region": data["regionName"],
-        
+        "city": data["cityName"],
     }
