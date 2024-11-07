@@ -11,3 +11,5 @@ class AllAssertsTest(unittest.TestCase):
         self.assertFalse(False)
 
     def test_assert_raises(self):
+        with self.assertRaises(ValueError):
+            int("no_soy_un_numero")
