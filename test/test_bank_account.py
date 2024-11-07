@@ -15,3 +15,4 @@ class BankAccountTests (unittest.TestCase):
         assert new_balance == 800
     
     def test_get_balance(self):
+        assert self.account.get_balance() == 1000
