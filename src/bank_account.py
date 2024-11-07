@@ -1,6 +1,6 @@
 from exceptions import InsufficientFundsError
 class BankAccount:
-    def __init__(self, balance=0, log_file = None):
+    def __init__(self, balance=0, log_file=None):
         self.balance = balance
         self.log_file = log_file
         self._log_transaction('Cuenta creada')
@@ -17,28 +17,13 @@ class BankAccount:
         return self.balance
 
     def withdraw(self, amount):
+        if amount > self.balance:
+            raise InsufficientFundsError(f"Withdrawal of {amount} exceeds balance {self.balance}")
         if amount > 0:
             self.balance -= amount
             self._log_transaction(f"Withdrew {amount}. New balance: {self.balance}")
-            raise InsufficientFundsError(f"Withdrawal of {amount} exceeds balance {self.balance}")
         return self.balance
 
     def get_balance(self):
         self._log_transaction(f"Checked balance. Current balance: {self.balance}")
         return self.balance
-    
-    def transfer(self, amount, account:BankAccount): # type: ignore
-        if self.balance < amount:
-            self._log_transaction(f"Insuficient Balance: {self.balance} - Amount: {amount}")
-            raise ValueError("Balance insuficiente")
-        account.deposit(amount)
-        return self.withdraw(amount)
-class InsufficientFunds(Exception):
-    def __init__(self, mensaje):
-        self.mensaje = mensaje
-        super().__init__(self.mensaje)
-
-class AccountNumberNotValid(Exception):
-    def __init__(self, mensaje):
-        self.mensaje = mensaje
-        super().__init__(self.mensaje)
