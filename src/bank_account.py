@@ -20,6 +20,7 @@ class BankAccount:
         if amount > 0:
             self.balance -= amount
             self._log_transaction(f"Withdrew {amount}. New balance: {self.balance}")
+            raise InsufficientFundsError(f"Withdrawal of {amount} exceeds balance {self.balance}")
         return self.balance
 
     def get_balance(self):
