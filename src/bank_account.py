@@ -14,3 +14,7 @@ class BankAccount:
 
     def get_balance(self):
         return self.balance
+    
+    def transfer(self, amount):
+        if amount > 0:
+            self.balance -= amount
