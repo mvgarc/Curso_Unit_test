@@ -13,3 +13,7 @@ class AllAssertsTest(unittest.TestCase):
     def test_assert_raises(self):
         with self.assertRaises(ValueError):
             int("no_soy_un_numero")
+
+    def test_assert_in(self):
+        self.assertIn(10, [2, 4, 5, 10])
+        self.assertNotIn(5, [2, 4, 10])
