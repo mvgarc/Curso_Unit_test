@@ -1,4 +1,4 @@
-from src.exceptions import InsufficientFundsError
+from exceptions import InsufficientFundsError
 class BankAccount:
     def __init__(self, balance=0, log_file = None):
         self.balance = balance
