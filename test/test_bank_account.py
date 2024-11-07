@@ -1,4 +1,5 @@
-import unittest , os
+import unittest , os, sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 from exceptions import InsufficientFundsError
 from bank_account import BankAccount
 
@@ -24,7 +25,7 @@ class BankAccountTests (unittest.TestCase):
         self.assertEqual(new_balance, 800, "El balance no es igual")
     
     def test_get_balance(self):
-        self.assertEqual(self.account.get_balance(), 1001)
+        self.assertEqual(self.account.get_balance(), 1000)
 
     def test_transaction_log(self):
         self.account.deposit(500)
