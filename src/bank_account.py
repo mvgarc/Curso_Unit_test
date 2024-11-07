@@ -31,3 +31,12 @@ class BankAccount:
             raise ValueError("Balance insuficiente")
         account.deposit(amount)
         return self.withdraw(amount)
+class InsufficientFunds(Exception):
+    def __init__(self, mensaje):
+        self.mensaje = mensaje
+        super().__init__(self.mensaje)
+
+class AccountNumberNotValid(Exception):
+    def __init__(self, mensaje):
+        self.mensaje = mensaje
+        super().__init__(self.mensaje)
