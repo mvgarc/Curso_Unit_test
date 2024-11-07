@@ -20,7 +20,7 @@ class BankAccountTests (unittest.TestCase):
 
     def test_withdraw(self):
         new_balance = self.account.withdraw(200)
-        assert new_balance == 800
+        self.assertEqual(new_balance, 800, "El balance no es igual")
     
     def test_get_balance(self):
         assert self.account.get_balance() == 1000
