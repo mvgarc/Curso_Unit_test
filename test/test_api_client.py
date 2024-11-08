@@ -7,4 +7,5 @@ class ApiClientTest(unittest.TestCase):
         result = get_location("8.8.8.8")
         self.assertEqual(
             result.get("country"),
+            "United States of America"
         )
