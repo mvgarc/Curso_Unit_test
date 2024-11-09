@@ -15,7 +15,7 @@ class ApiClientTest(unittest.TestCase):
         result = get_location("8.8.8.8")
         self.assertEqual(
             result.get("country"),
-            "United States of America"
+            "USA"
         )
         self.assertEqual(result.get("region"), "FLORIDA")
         self.assertEqual(result.get("city"), "MIAMI")
