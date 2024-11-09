@@ -4,7 +4,7 @@ from unittest.mock import patch
 
 class ApiClientTest(unittest.TestCase):
 
-    @patch()
+    @patch('src.api_client.requests.get')
     def test_get_location_returns_expected_data(self):
         result = get_location("8.8.8.8")
         self.assertEqual(
