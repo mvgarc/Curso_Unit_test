@@ -8,7 +8,9 @@ class ApiClientTest(unittest.TestCase):
     def test_get_location_returns_expected_data(self, mock_get):
         mock_get.return_value.status_code = 200
         mock_get.return_value.json.return_value = {
-            
+            "countryName": "USA",
+            "regionName": "FLORIDA",
+            "cityName": "MIAMI",
         }
         result = get_location("8.8.8.8")
         self.assertEqual(
