@@ -38,6 +38,6 @@ class BankAccountTests (unittest.TestCase):
         assert self._count_lines(self.account.log_file) == 2
     
     @patch("src.bank_account.datetime")
-    def test_withdraw_insufficient_funds(self):
+    def test_withdraw_insufficient_funds(self, mock_datetime):
         with self.assertRaises(InsufficientFundsError):
             self.account.withdraw(2000)
