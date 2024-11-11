@@ -13,6 +13,8 @@ class BankAccount:
 
     def deposit(self, amount):
         now = datetime.now()
+        if now.hour < 8:
+
         if amount > 0:
             self.balance += amount
             self._log_transaction(f"Deposited {amount}. New balance: {self.balance}")
