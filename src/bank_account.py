@@ -1,4 +1,5 @@
 from exceptions import InsufficientFundsError
+from datetime import datetime
 class BankAccount:
     def __init__(self, balance=0, log_file=None):
         self.balance = balance
@@ -11,6 +12,7 @@ class BankAccount:
                 f.write(f"{message}\n")
 
     def deposit(self, amount):
+        now = datetime.now()
         if amount > 0:
             self.balance += amount
             self._log_transaction(f"Deposited {amount}. New balance: {self.balance}")
