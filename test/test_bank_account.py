@@ -1,7 +1,7 @@
 import unittest , os, sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 from unittest.mock import patch
-from exceptions import InsufficientFundsError
+from exceptions import InsufficientFundsError , WithdrawalTimeRestrictionError
 from bank_account import BankAccount
 
 class BankAccountTests (unittest.TestCase):
@@ -45,9 +45,10 @@ class BankAccountTests (unittest.TestCase):
     def test_withdraw_during_business_hours(self, mock_datetime):
         mock_datetime.now.return_value.hour = 8
         new_balance = self.account.withdraw(100)
-        self.assertEqual(new_balance, 1100)
+        self.assertEqual(new_balance, 900)
 
     @patch("src.bank_account.datetime")
     def test_withdraw_raises_during_business_hours(self, mock_datetime):
         mock_datetime.now.return_value.hour = 6
-        self.account.withdraw(2000)
+        with self.assertRaises(WithdrawalTimeRestrictionError):
+            self.account.withdraw(100)
