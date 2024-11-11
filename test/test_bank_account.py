@@ -45,10 +45,11 @@ class BankAccountTests (unittest.TestCase):
     def test_withdraw_during_business_hours(self, mock_datetime):
         mock_datetime.now.return_value.hour = 8
         new_balance = self.account.withdraw(100)
+        print (new_balance)
         self.assertEqual(new_balance, 900)
 
     @patch("src.bank_account.datetime")
     def test_withdraw_raises_during_business_hours(self, mock_datetime):
-        mock_datetime.now.return_value.hour = 6
+        mock_datetime.now.return_value.hour = 7
         with self.assertRaises(WithdrawalTimeRestrictionError):
             self.account.withdraw(100)
