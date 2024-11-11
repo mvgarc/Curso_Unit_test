@@ -1,4 +1,4 @@
-import unittest
+import unittest, requests
 from src.api_client import get_location
 from unittest.mock import patch
 
@@ -12,6 +12,7 @@ class ApiClientTest(unittest.TestCase):
             "regionName": "FLORIDA",
             "cityName": "MIAMI",
         }
+        with self.assertRaises(requests.exceptions.RequestException("Service Unavailable"))
         result = get_location("8.8.8.8")
         self.assertEqual(
             result.get("country"),
