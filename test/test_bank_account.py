@@ -40,5 +40,11 @@ class BankAccountTests (unittest.TestCase):
     @patch("src.bank_account.datetime")
     def test_withdraw_insufficient_funds(self, mock_datetime):
         with self.assertRaises(InsufficientFundsError):
-            mock_datetime.now.return_value.hour = 7
+            mock_datetime.now.return_value.hour = 8
+            self.account.withdraw(2000)
+
+    @patch("src.bank_account.datetime")
+    def test_withdraw_insufficient_funds(self, mock_datetime):
+        with self.assertRaises(InsufficientFundsError):
+            mock_datetime.now.return_value.hour = 6
             self.account.withdraw(2000)
