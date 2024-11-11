@@ -1,5 +1,6 @@
 import unittest , os, sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+from unittest.mock import patch
 from exceptions import InsufficientFundsError
 from bank_account import BankAccount
 
@@ -36,6 +37,7 @@ class BankAccountTests (unittest.TestCase):
         self.account.deposit(500)
         assert self._count_lines(self.account.log_file) == 2
     
+    @patch
     def test_withdraw_insufficient_funds(self):
         with self.assertRaises(InsufficientFundsError):
             self.account.withdraw(2000)
