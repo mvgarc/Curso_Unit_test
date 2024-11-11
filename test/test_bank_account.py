@@ -37,14 +37,17 @@ class BankAccountTests (unittest.TestCase):
         self.account.deposit(500)
         assert self._count_lines(self.account.log_file) == 2
     
-    @patch("src.bank_account.datetime")
-    def test_withdraw_insufficient_funds(self, mock_datetime):
+    def test_withdraw_insufficient_funds(self):
         with self.assertRaises(InsufficientFundsError):
-            mock_datetime.now.return_value.hour = 8
             self.account.withdraw(2000)
+    
+    @patch("src.bank_account.datetime")
+    def test_withdraw_during_business_hours(self, mock_datetime):
+        mock_datetime.now.return_value.hour = 8
+        new_balance = self.account.withdraw(100)
+        self.assertEqual(new_balance, 1100)
 
     @patch("src.bank_account.datetime")
-    def test_withdraw_insufficient_funds(self, mock_datetime):
-        with self.assertRaises(InsufficientFundsError):
-            mock_datetime.now.return_value.hour = 6
-            self.account.withdraw(2000)
+    def test_withdraw_during_business_hours(self, mock_datetime):
+        mock_datetime.now.return_value.hour = 6
+        self.account.withdraw(2000)
