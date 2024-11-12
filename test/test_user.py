@@ -16,3 +16,11 @@ class UserTests(unittest.TestCase):
         user = User(name=name_generated, email=email_generated)
         self.assertEqual(user.name, name_generated)
         self.assertEqual(user.email, email_generated)
+
+    def test_user_with_multiple_accounts(self):
+        for _ in range(3):
+            bank_account = BankAccount(
+                balance=self.faker.random_int(min=100, max=2000, step=50),
+                log_file=self.faker.file_name(extension=".txt")
+            )
+            self.user.add_account(account=bank_account)
