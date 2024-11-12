@@ -20,14 +20,17 @@ class BankAccount:
     def withdraw(self, amount):
         now = datetime.now()
         if now.hour < 8 or now.hour > 17:
-            raise WithdrawalTimeRestrictionError("Withdrawals are only allowed from 8:00 am to 17:00pm")
+            raise WithdrawalTimeRestrictionError("Withdrawals are only allowed from 8am to 5pm")
 
         if amount > self.balance:
-            raise InsufficientFundsError(f"Withdrawal of {amount} exceeds balance {self.balance}")
+            raise InsufficientFundsError(
+                f"Withdrawal of {amount} exceeds balance {self.balance}"
+            )
         if amount > 0:
             self.balance -= amount
             self._log_transaction(f"Withdrew {amount}. New balance: {self.balance}")
         return self.balance
+
 
     def get_balance(self):
         self._log_transaction(f"Checked balance. Current balance: {self.balance}")
