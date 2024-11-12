@@ -21,22 +21,24 @@ class BankAccountTests (unittest.TestCase):
         new_balance = self.account.deposit(500)
         self.assertEqual(new_balance,1500 , "El balance no es igual")
 
-    def test_withdraw(self):
+    @patch("src.bank_account.datetime")
+    def test_withdraw_decreases_balance_by_withdraw_amount(self, mock_datetime):
+        mock_datetime.now.return_value.hour = 10
         new_balance = self.account.withdraw(200)
         self.assertEqual(new_balance, 800, "El balance no es igual")
-    
-    def test_get_balance(self):
+
+    def test_get_balance_returns_current_balance(self):
         self.assertEqual(self.account.get_balance(), 1000)
 
-    def test_transaction_log(self):
+    def test_deposit_logs_transaction(self):
         self.account.deposit(500)
-        self.assertTrue (os.path.exists("transaction_log.txt"))
+        self.assertTrue(os.path.exists("transaction_log.txt"))
 
-    def test_count_transactions(self):
-        assert self._count_lines(self.account.log_file) == 1
+    def test_withdraw_logs_each_transaction(self):
+        self.assertEqual(self._count_lines(self.account.log_file), 1)
         self.account.deposit(500)
-        assert self._count_lines(self.account.log_file) == 2
-    
+        self.assertEqual(self._count_lines(self.account.log_file), 2)
+        
     def test_withdraw_insufficient_funds(self):
         with self.assertRaises(InsufficientFundsError):
             self.account.withdraw(2000)
