@@ -17,6 +17,8 @@ def multiply(a, b):
 def divide(a, b):
     """
     >>> divide (10, 0)
+    Traceback (most recent call last):
+    ValueError: La división por cero no está permitida
     """
     if b == 0:
         raise ValueError("La division por cero no esta permitida")
