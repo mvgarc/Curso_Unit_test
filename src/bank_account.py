@@ -36,3 +36,4 @@ class BankAccount:
     def get_balance(self):
         self._log_transaction(f"Checked balance. Current balance: {self.balance}")
         return self.balance
+    """..."""
