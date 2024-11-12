@@ -3,3 +3,6 @@ class User:
         self.name = name
         self.email = email
         self.accounts = []
+
+    def add_account(self, account):
+        self.accounts.append(account)
