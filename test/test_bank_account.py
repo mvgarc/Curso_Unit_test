@@ -17,7 +17,7 @@ class BankAccountTests (unittest.TestCase):
         with open(filename, "r") as f:
             return len(f.readlines())
 
-    def test_deposit(self):
+    def test_deposit_increases_balance_by_deposit_amount(self):
         new_balance = self.account.deposit(500)
         self.assertEqual(new_balance,1500 , "El balance no es igual")
 
