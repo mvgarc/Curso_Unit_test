@@ -28,7 +28,3 @@ class UserTests(unittest.TestCase):
         expected_value = self.user.get_total_balance()
         value = sum(account.get_balance() for account in self.user.accounts)
         self.assertEqual(value, expected_value)
-
-    def tearDown(self) -> None:
-        for account in self.user.accounts:
-            os.remove(account.log_file)
