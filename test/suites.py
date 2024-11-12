@@ -1,12 +1,11 @@
 import unittest
 
-from test_bank_account import BankAccountTests
-
+from test.test_bank_account import BankAccount
 
 def bank_account_suite():
     suite = unittest.TestSuite()
-    suite.addTest(BankAccountTests("test_deposit"))
-    suite.addTest(BankAccountTests("test_withdraw"))
+    suite.addTest(BankAccount("test_deposit"))
+    suite.addTest(BankAccount("test_withdraw"))
     return suite
 
 if __name__ == "__main__":
