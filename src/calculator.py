@@ -9,6 +9,13 @@ def sum(a,b):
     return a + b
 
 def subtract(a, b):
+    """
+    >>> subtract(5,7)
+    -2
+
+    >>> subtract(5,5)
+    0
+    """
     return a - b
 
 def multiply(a, b):
