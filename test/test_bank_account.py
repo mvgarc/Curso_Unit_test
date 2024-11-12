@@ -46,33 +46,33 @@ class BankAccountTests(unittest.TestCase):
             self.account.withdraw(2000)
 
     @patch("src.bank_account.datetime")
-    def test_withdraw_during_business_hours(self, mock_datetime):
+    def test_withdraw_during_bussines_hours(self, mock_datetime):
         mock_datetime.now.return_value.hour = 8
         new_balance = self.account.withdraw(100)
         self.assertEqual(new_balance, 900)
 
     @patch("src.bank_account.datetime")
-    def test_withdraw_disallow_before_business_hours(self, mock_datetime):
+    def test_withdraw_disallow_before_bussines_hours(self, mock_datetime):
         mock_datetime.now.return_value.hour = 7
         with self.assertRaises(WithdrawalTimeRestrictionError):
             self.account.withdraw(100)
 
     @patch("src.bank_account.datetime")
-    def test_withdraw_disallow_after_business_hours(self, mock_datetime):
+    def test_withdraw_disallow_after_bussines_hours(self, mock_datetime):
         mock_datetime.now.return_value.hour = 18
         with self.assertRaises(WithdrawalTimeRestrictionError):
             self.account.withdraw(100)
 
 
-    def test_deposit_multiple_amounts(self):
+    def test_deposit_multiple_ammounts(self):
 
         test_cases = [
-            {"amount": 100, "expected": 1100},
-            {"amount": 3000, "expected": 4000},
-            {"amount": 4500, "expected": 5500},
+            {"ammount": 100, "expected": 1100},
+            {"ammount": 3000, "expected": 4000},
+            {"ammount": 4500, "expected": 5500},
         ]
         for case in test_cases:
             with self.subTest(case=case):
                 self.account = BankAccount(balance=1000, log_file="transactions.txt")
-                new_balance = self.account.deposit(case["amount"])
+                new_balance = self.account.deposit(case["ammount"])
                 self.assertEqual(new_balance, case["expected"])
