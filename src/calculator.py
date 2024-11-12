@@ -2,6 +2,9 @@ def sum(a,b):
     """
     >>> sum(5,7)
     12
+
+    >>> sum(5,5)
+    10
     """
     return a + b
 
