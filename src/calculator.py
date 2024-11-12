@@ -1,7 +1,7 @@
 def sum(a,b):
     """
     >>> sum(5,7)
-    11
+    12
     """
     return a + b
 
